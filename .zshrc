@@ -1,48 +1,14 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-# export ZSH=~/.oh-my-zsh
-export TERM=xterm-256color
-
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh # load zsh-autosuggestions 
-source "${HOME}/.zgen/zgen.zsh" # load zgen
-zgen load miekg/lean
+export ZSH="/Users/richardsenar/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# POWERLEVEL9K_MODE='awesome-patched'
-# ZSH_THEME="powerlevel9k/powerlevel9k"
-
-## Powerlevel9k Settings
-# POWERLEVEL9K_HISTORY_BACKGROUND='green'
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status context dir dir_writable vcs)
-# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time)
-
-# POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
-# POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
-# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-# POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND="white"
-# POWERLEVEL9K_STATUS_VERBOSE=true
-# POWERLEVEL9K_TIME_FOREGROUND="249"
-# POWERLEVEL9K_TIME_BACKGROUND="black"
-# POWERLEVEL9K_TIME_FORMAT="%D{%H:%M} \uE12E"
-# POWERLEVEL9K_VCS_GIT_ICON='\uE1AA'
-# POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uE1AA'
-# POWERLEVEL9K_HIDE_BRANCH_ICON=true
-
-# #Powerline
-# if [ -d "$HOME/Library/Python/2.7/bin" ]; then
-#     PATH="$HOME/Library/Python/2.7/bin:$PATH"
-# fi
-
-# zsh tmux settings
-# ZSH_TMUX_AUTOSTART='true'
-
-# Default username to hide "user@hostname" info
-DEFAULT_USER=`whoami`
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -60,8 +26,14 @@ DEFAULT_USER=`whoami`
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -96,9 +68,10 @@ DEFAULT_USER=`whoami`
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=( git zsh-autosuggestions )
+plugins=(git)
 
-# source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -116,26 +89,17 @@ plugins=( git zsh-autosuggestions )
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# export GOPATH=$HOME/Dropbox_Local/HUB/Projects/GoLang
-# export GOROOT=/usr/local/opt/go/libexec
-# export PATH=$PATH:$GOPATH/bin
-# export PATH=$PATH:$GOROOT/bin
 
 # Example aliases
-alias zshconfig="code ~/.zshrc"
-alias ohmyzsh="code ~/.oh-my-zsh"
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Default username to hide "user@hostname" info
+DEFAULT_USER=`whoami`
 
 #  exa aliasing
 alias ls='exa'
@@ -145,6 +109,18 @@ alias la='exa -lagh'
 alias lt='exa -laT'
 alias lf='l *(.)'
 alias ld='l -d */'
+
+# Colorize terminal
+alias ls='ls -G'
+alias ll='ls -lG'
+export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+export GREP_OPTIONS="--color"
+
+# Nicer history
+export HISTSIZE=100000
+# export HISTFILE="$HOME/.history"
+export HISTFILE="$HOME/.zsh_history"
+export SAVEHIST=$HISTSIZE
 
 alias ffiles='find * -type f'
 alias srch='grep -vI "\x00" -- *'
@@ -165,7 +141,7 @@ alias jygo='docker run -it -p 8888:8888 gopherdata/gophernotes-ds'
 alias deac='deactivate'
 alias gpath='cd $GOPATH/src'
 alias proj='cd $HOME/Dropbox_Local/hub/Projects'
-alias glog='git log --oneline -30 --graph --all --decorate'
+alias glog='git log --oneline -50 --graph --all --decorate'
 alias media='cd /Volumes/Media\ Drive/Media/Movies/'
 alias bnotes='code $HOME/Dropbox_Local/HUB/BASH_commands.sh'
 alias bprof='code $HOME/.bash_profile'
@@ -182,31 +158,35 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias back='cd $OLDPWD'
 
+alias sqlite='/usr/local/opt/sqlite/bin/sqlite3'
+
+# Pyenv
+export PATH="/Users/richardsenar/.pyenv:$PATH"
+eval "$(pyenv init -)"
+
+# Add paths
+export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
+export PATH="$HOME/bin:$PATH"
+
 # GoLang Settings
-export GOBIN=$HOME/Dropbox_Local/HUB/Projects/GoLang/bin
-export GOPATH=$HOME/Dropbox_Local/HUB/Projects/GoLang
-export PATH=$HOME/Dropbox_Local/HUB/Projects/GoLang/bin:$PATH # golang bin
-export PATH=/usr/local/bin:$PATH # homebrew scripts
-export PATH=$HOME/bin:$PATH # myshell scripts
+# export GOBIN=$HOME/Dropbox_Local/HUB/Projects/GoLang/bin
+# export GOPATH=$HOME/Dropbox_Local/HUB/Projects/GoLang
+# export PATH=$HOME/Dropbox_Local/HUB/Projects/GoLang/bin:$PATH # golang bin
+# export PATH=/usr/local/bin:$PATH # homebrew scripts
+# export PATH=$HOME/bin:$PATH # myshell scripts
 
 export GREP_OPTIONS='--color=auto'
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_172, x86_64`
 
-export WORKON_HOME=~/Envs
-source /usr/local/bin/virtualenvwrapper.sh
-
-export FCEDIT=nano
-
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/richardsenar/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/richardsenar/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/richardsenar/google-cloud-sdk/path.zsh.inc' ];
+then . '/Users/richardsenar/google-cloud-sdk/path.zsh.inc';
+fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/richardsenar/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/richardsenar/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/richardsenar/google-cloud-sdk/completion.zsh.inc' ];
+then . '/Users/richardsenar/google-cloud-sdk/completion.zsh.inc';
+fi
 
-# if [ "$TMUX" = "" ]; then tmux; fi
-
-# Load Git completion
-zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
-fpath=(~/.zsh $fpath)
-
-autoload -Uz compinit && compinit
+# add your passphrase to your keychain
+# ssh-add -K ~/.ssh/id_rsa
