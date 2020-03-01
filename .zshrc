@@ -161,14 +161,18 @@ alias back='cd $OLDPWD'
 alias sqlite='/usr/local/opt/sqlite/bin/sqlite3'
 
 # Pyenv
-export PATH="/Users/richardsenar/.pyenv:$PATH"
-eval "$(pyenv init -)"
+# export PATH="/Users/richardsenar/.pyenv:$PATH"
+# eval "$(pyenv init -)"
 
 # Add paths
-export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
-export PATH="$HOME/bin:$PATH"
+export PATH=/usr/local/sbin:$PATH
+export PATH=$HOME/bin:$PATH
 
 # GoLang Settings
+export GOPATH=$HOME/go
+export PATH=$HOME/go/bin:$PATH
+export PATH=$HOME/Dropbox_Local/HUB/Projects/GoLang/bin:$PATH
+
 # export GOBIN=$HOME/Dropbox_Local/HUB/Projects/GoLang/bin
 # export GOPATH=$HOME/Dropbox_Local/HUB/Projects/GoLang
 # export PATH=$HOME/Dropbox_Local/HUB/Projects/GoLang/bin:$PATH # golang bin
